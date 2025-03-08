@@ -7,20 +7,24 @@
         <link rel="stylesheet" href="./styles.css" />
     </head>
     <body>
-        <button id="open-modal" class="btn">Open Modal</button>
+        <main>
+            <button class="btn open-modal" data-modal="#modal-1">Open Modal</button>
+            <button class="btn open-modal" data-modal="#modal-2">Open Modal 2</button>
+        </main>
 
-        <!-- Modal -->
-        <div id="modal" class="modal-backdrop">
+        <!-- Modal 1 -->
+        <div id="modal-1" class="modal-backdrop">
             <div class="modal-container">
-                <button id="close-modal" class="modal-close">&times;</button>
-                <div class="modal-content">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora ab repellendus
-                    quasi qui enim pariatur asperiores, velit, tempore nobis unde provident libero
-                    recusandae impedit quisquam placeat facere inventore atque, laudantium
-                    voluptatum. Consequatur illo perferendis alias magnam vitae. Voluptate
-                    recusandae autem similique? Veritatis provident officia dolor rerum sed nisi
-                    nemo dolorum!
-                </div>
+                <button class="modal-close">&times;</button>
+                <div class="modal-content">Modal content 1</div>
+            </div>
+        </div>
+
+        <!-- Modal 2 -->
+        <div id="modal-2" class="modal-backdrop">
+            <div class="modal-container">
+                <button class="modal-close">&times;</button>
+                <div class="modal-content">Modal content 2</div>
             </div>
         </div>
 

@@ -1,18 +1,40 @@
-const modal = document.querySelector("#modal");
-const modalBtn = document.querySelector("#open-modal");
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 
-modalBtn.addEventListener("click", () => {
-    modal.classList.add("show");
+let currentModal = null;
+
+$$("[data-modal]").forEach((modalBtn) => {
+    modalBtn.onclick = function () {
+        const modal = $(modalBtn.dataset.modal);
+        if (modal) {
+            modal.classList.add("show");
+            currentModal = modal;
+        }
+    };
 });
 
-modal.addEventListener("click", (e) => {
-    if (e.target.id === "modal" || e.target.id === "close-modal") {
-        modal.classList.remove("show");
-    }
+$$(".modal-close").forEach((modalClose) => {
+    modalClose.onclick = function () {
+        const modal = this.closest(".modal-backdrop");
+        if (modal) {
+            modal.classList.remove("show");
+            currentModal = null;
+        }
+    };
 });
 
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        modal.classList.remove("show");
+$$(".modal-backdrop").forEach((modal) => {
+    modal.onclick = function (e) {
+        if (e.target === this) {
+            this.classList.remove("show");
+            currentModal = null;
+        }
+    };
+});
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && currentModal) {
+        currentModal.classList.remove("show");
+        currentModal = null;
     }
 });
