@@ -12,6 +12,14 @@ button {
     background-color: transparent;
     border: none;
     outline: none;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-weight: 600;
 }
 
 body {
@@ -33,7 +41,7 @@ body {
     transition-duration: 0.3s;
 }
 
-.modal-backdrop.active {
+.modal-backdrop.show {
     opacity: 1;
     visibility: visible;
 }
@@ -49,7 +57,7 @@ body {
     transition: transform 0.3s;
 }
 
-.modal-backdrop.active .modal-container {
+.modal-backdrop.show .modal-container {
     transform: scale(1);
 }
 
