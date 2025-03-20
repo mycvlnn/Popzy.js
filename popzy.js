@@ -1,6 +1,3 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
 Popzy.elements = [];
 
 Popzy.prototype._createButton = function (text, className, onClick) {
@@ -219,7 +216,7 @@ function Popzy({
         destroyOnClose,
     };
 
-    this._template = $(`#${this._options.templateId}`);
+    this._template = document.querySelector(`#${this._options.templateId}`);
     if (!this._template) {
         console.error(`Template with id ${this._options.templateId} not found`);
         return;
@@ -230,53 +227,3 @@ function Popzy({
     this._footerActions = [];
     this._handleEscapeKey = this._handleEscapeKeyOuter.bind(this);
 }
-
-const modal = new Popzy({
-    templateId: "template-login",
-    cssClassBackdrop: ["modal-1"],
-    closeMethods: ["backdrop", "esc", "button"],
-    onOpen: function () {
-        console.log("Open modal");
-    },
-    onClose: function () {
-        console.log("Close modal");
-    },
-    footer: true,
-    header: true,
-});
-
-modal.setHeaderContent("Header content");
-
-const modalLorem = new Popzy({
-    templateId: "template-lorem",
-    cssClassBackdrop: ["modal-2"],
-    closeMethods: ["backdrop", "button", "esc"],
-    onOpen: function () {
-        console.log("Open modal");
-    },
-    onClose: function () {
-        console.log("Close modal");
-    },
-    footer: true,
-    header: true,
-    destroyOnClose: false,
-});
-
-modalLorem.setHeaderContent("Header content");
-
-modal.addFooterButton("OK", "btn btn-primary", function () {
-    modalLorem.open();
-});
-
-modal.addFooterButton("<span>Huỷ bỏ</span>", "btn btn-danger", function () {
-    console.log("Cancel");
-    modal.close();
-});
-
-$("#modal-btn-1").onclick = function () {
-    modal.open();
-};
-
-$("#modal-btn-2").onclick = function () {
-    modalLorem.open();
-};
