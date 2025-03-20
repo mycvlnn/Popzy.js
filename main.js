@@ -1,10 +1,9 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-Modal.elements = [];
+Popzy.elements = [];
 
-// Xử lý tối ưu dùng chung cho tất cả modal
-Modal.prototype._createButton = function (text, className, onClick) {
+Popzy.prototype._createButton = function (text, className, onClick) {
     const button = document.createElement("button");
     button.className = className;
     button.innerHTML = text;
@@ -13,7 +12,7 @@ Modal.prototype._createButton = function (text, className, onClick) {
 };
 
 // Xử lý tối ưu dùng chung cho tất cả modal
-Modal.prototype._getScrollbarWidth = function () {
+Popzy.prototype._getScrollbarWidth = function () {
     // Kiểm tra trước đó đã tính toán rồi thì trả về giá trị đã tính
     if (this._scrollbarWidth) return this._scrollbarWidth;
     const div = document.createElement("div");
@@ -30,18 +29,18 @@ Modal.prototype._getScrollbarWidth = function () {
     return width;
 };
 
-Modal.prototype._buildModal = function () {
+Popzy.prototype._buildModal = function () {
     // Create backdrop
     this._backdrop = document.createElement("div");
-    this._backdrop.className = "modal-backdrop";
+    this._backdrop.className = "popzy__backdrop";
 
     // Create container
     const container = document.createElement("div");
-    container.className = "modal-container";
+    container.className = "popzy__container";
 
     // Create modal content
     const modalContent = document.createElement("div");
-    modalContent.className = "modal-content";
+    modalContent.className = "popzy__content";
 
     // Append content and elements
     const templateCloned = this._template.content.cloneNode(true);
@@ -49,7 +48,7 @@ Modal.prototype._buildModal = function () {
 
     // Thêm close button vào modal content
     if (this._allowButtonClose) {
-        const closeBtn = this._createButton("&times;", "modal-close", this.close.bind(this));
+        const closeBtn = this._createButton("&times;", "popzy__close", () => this.close());
         modalContent.append(closeBtn);
     }
 
@@ -58,7 +57,7 @@ Modal.prototype._buildModal = function () {
     // Chèn footer vào modal
     if (this._options.footer) {
         this._footerModal = document.createElement("div");
-        this._footerModal.className = "modal-footer";
+        this._footerModal.className = "popzy_footer";
         this._renderFooterContent();
         this._renderFooterButtons();
         container.append(this._footerModal);
@@ -66,10 +65,10 @@ Modal.prototype._buildModal = function () {
 
     // Chèn header vào modal
     if (this._options.header) {
-        const header = document.createElement("div");
-        header.className = "modal-header";
-        header.innerHTML = "Header content";
-        container.prepend(header);
+        this._headerModal = document.createElement("div");
+        this._headerModal.className = "popzy_header";
+        this._renderHeaderContent();
+        container.prepend(this._headerModal);
     }
 
     container.classList.add(...this._options.cssClassContainer);
@@ -78,7 +77,7 @@ Modal.prototype._buildModal = function () {
     document.body.append(this._backdrop);
 };
 
-Modal.prototype._ontransitionend = function (callback) {
+Popzy.prototype._ontransitionend = function (callback) {
     this._backdrop.ontransitionend = (event) => {
         if (event.propertyName !== "opacity") return;
 
@@ -86,27 +85,27 @@ Modal.prototype._ontransitionend = function (callback) {
     };
 };
 
-Modal.prototype._handleEscapeKey = function (e) {
-    console.log(this);
-    if (this !== Modal.elements[Modal.elements.length - 1]) return;
+Popzy.prototype._handleEscapeKeyOuter = function (e) {
+    console.log(this === Popzy.elements[Popzy.elements.length - 1]);
+    if (this !== Popzy.elements[Popzy.elements.length - 1]) return;
 
     if (e.key === "Escape") {
         this.close();
     }
 };
 
-Modal.prototype.open = function () {
+Popzy.prototype.open = function () {
+    Popzy.elements.push(this);
     if (!this._backdrop) {
         this._buildModal();
-        Modal.elements.push(this);
     }
 
     setTimeout(() => {
-        this._backdrop.classList.add("show");
+        this._backdrop.classList.add("popzy--show");
     }, 0);
 
     // Thực hiện khoá cuộn của body
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("popzy--no-scroll");
     document.body.style.paddingRight = this._getScrollbarWidth() + "px";
 
     // Attach events
@@ -128,12 +127,11 @@ Modal.prototype.open = function () {
     return this._backdrop;
 };
 
-Modal.prototype.close = function (destroy = this._options.destroyOnClose) {
-    console.log(destroy);
+Popzy.prototype.close = function (destroy = this._options.destroyOnClose) {
     if (!this._backdrop) return; // Nếu trong trường hợp không có backdrop thì thôi không làm gì tránh lỗi
 
-    Modal.elements.pop();
-    this._backdrop.classList.remove("show");
+    Popzy.elements.pop();
+    this._backdrop.classList.remove("popzy--show");
     document.removeEventListener("keydown", this._handleEscapeKey);
 
     this._ontransitionend(() => {
@@ -141,36 +139,49 @@ Modal.prototype.close = function (destroy = this._options.destroyOnClose) {
             this._backdrop.remove();
             this._backdrop = null;
             this._footerModal = null;
+            this._headerModal = null;
         }
         // Thực hiện mở cuộn của body
-        if (!Modal.elements.length) {
-            document.body.style.overflow = "";
+        if (!Popzy.elements.length) {
+            document.body.classList.remove("popzy--no-scroll");
             document.body.style.paddingRight = "";
         }
         if (typeof this._options.onClose === "function") this._options.onClose();
     });
 };
 
-Modal.prototype.destroy = function () {
+Popzy.prototype.destroy = function () {
     if (this._backdrop) {
         this._backdrop.remove();
         this._backdrop = null;
     }
 };
 
-Modal.prototype.setFooterContent = function (content) {
+Popzy.prototype._renderHeaderContent = function () {
+    if (this._headerModal && this._headerContent) {
+        this._headerModal.innerHTML = this._headerContent;
+    }
+};
+
+Popzy.prototype.setHeaderContent = function (content) {
+    if (!this._options.header) return;
+    this._headerContent = content;
+    this._renderHeaderContent();
+};
+
+Popzy.prototype.setFooterContent = function (content) {
     if (!this._options.footer) return;
     this._footerContent = content;
     this._renderFooterContent();
 };
 
-Modal.prototype._renderFooterContent = function () {
+Popzy.prototype._renderFooterContent = function () {
     if (this._footerModal && this._footerContent) {
         this._footerModal.innerHTML = this._footerContent;
     }
 };
 
-Modal.prototype._renderFooterButtons = function () {
+Popzy.prototype._renderFooterButtons = function () {
     this._footerActions.forEach((action) => {
         if (this._footerModal) {
             this._footerModal.append(action);
@@ -178,14 +189,14 @@ Modal.prototype._renderFooterButtons = function () {
     });
 };
 
-Modal.prototype.addFooterButton = function (title, className, onClick) {
+Popzy.prototype.addFooterButton = function (title, className, onClick) {
     if (!this._options.footer) return;
     const button = this._createButton(title, className, onClick);
     this._footerActions.push(button);
     this._renderFooterButtons();
 };
 
-function Modal({
+function Popzy({
     templateId,
     cssClassContainer = [],
     cssClassBackdrop = [],
@@ -217,14 +228,10 @@ function Modal({
     this._allowButtonClose = closeMethods.includes("button");
     this._allowEscapeClose = closeMethods.includes("esc");
     this._footerActions = [];
-    this._handleEscapeKey = this._handleEscapeKey.bind(this);
+    this._handleEscapeKey = this._handleEscapeKeyOuter.bind(this);
 }
 
-/**
- * Phát triển modal trở nên linh hoạt hơn
- */
-
-const modal = new Modal({
+const modal = new Popzy({
     templateId: "template-login",
     cssClassBackdrop: ["modal-1"],
     closeMethods: ["backdrop", "esc", "button"],
@@ -238,8 +245,10 @@ const modal = new Modal({
     header: true,
 });
 
-const modal2 = new Modal({
-    templateId: "template-login",
+modal.setHeaderContent("Header content");
+
+const modalLorem = new Popzy({
+    templateId: "template-lorem",
     cssClassBackdrop: ["modal-2"],
     closeMethods: ["backdrop", "button", "esc"],
     onOpen: function () {
@@ -253,8 +262,10 @@ const modal2 = new Modal({
     destroyOnClose: false,
 });
 
+modalLorem.setHeaderContent("Header content");
+
 modal.addFooterButton("OK", "btn btn-primary", function () {
-    modal.open();
+    modalLorem.open();
 });
 
 modal.addFooterButton("<span>Huỷ bỏ</span>", "btn btn-danger", function () {
@@ -267,5 +278,5 @@ $("#modal-btn-1").onclick = function () {
 };
 
 $("#modal-btn-2").onclick = function () {
-    modal2.open();
+    modalLorem.open();
 };
