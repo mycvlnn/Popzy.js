@@ -2,172 +2,592 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <title>Popzy.js: A 2kB Vanilla JavaScript Modal Library</title>
+        <meta
+            name="description"
+            content="Popzy.js is a lightweight and user-friendly modal library written in pure JavaScript. It is designed for great user experience (2kB, no dependencies, fully customizable with CSS)."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Js Modal</title>
-        <link rel="stylesheet" href="./popzy.css" />
+        <link rel="stylesheet" href="./assets/highlight/styles.css" media="all" />
+        <link rel="stylesheet" href="./assets/styles.css" media="all" />
+        <link rel="stylesheet" href="./src/popzy.css" />
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     </head>
     <body>
-        <main>
-            <button class="btn" id="modal-btn-1">Open Modal 1</button>
-            <button class="btn" id="modal-btn-2">Open Modal 2</button>
-
-            <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad odit suscipit ducimus
-                numquam illo asperiores, dolores impedit quibusdam veritatis expedita magnam
-                repellendus, ipsa nulla maiores molestias consequatur cumque doloribus officia quos
-                sint dolorem? Quos esse totam iusto magni corporis, alias ducimus consequuntur
-                voluptates molestias doloribus amet iste quo porro harum voluptatibus accusamus, est
-                illo et, velit repellat voluptate vel consequatur. Voluptatibus saepe quas
-                consectetur dignissimos minima sed error placeat perspiciatis reiciendis
-                reprehenderit natus animi laudantium, odit commodi ea. Cumque facilis alias
-                consectetur velit ipsa corrupti assumenda eveniet asperiores, veniam numquam eaque
-                itaque, nesciunt amet minus saepe dolorum ab. Consequuntur vitae veniam facere
-                distinctio, odit aperiam voluptatem voluptate! Soluta, hic. Aliquam quod assumenda
-                neque ipsam et atque corporis voluptatem dolores tempora perferendis, nisi error
-                exercitationem! Eum molestias consequuntur porro tenetur, voluptatibus esse iusto
-                amet harum. Fugiat quod ut quasi assumenda veritatis aut vero? Corrupti itaque dolor
-                quae, molestias eum aperiam nisi officia consectetur temporibus nemo earum animi
-                quam nesciunt voluptas perferendis, dolorem vel omnis odit maxime! Doloribus officia
-                rem sit dolores? Eos, officiis recusandae consequatur itaque quaerat quia deleniti
-                cumque, quasi cupiditate in maiores commodi fugiat at ut laboriosam dolorum!
-                Voluptatem, vero id! Debitis, neque vero? Quae amet qui ipsum quod dolorum aperiam
-                commodi excepturi, autem officiis, voluptas sunt temporibus eveniet labore
-                aspernatur ducimus possimus, earum ea asperiores. Omnis amet doloremque corporis
-                eaque nam magnam molestias velit maiores esse quam itaque illo laborum eligendi
-                delectus dignissimos quibusdam modi repellat reprehenderit hic error, quasi sit
-                optio, consequatur quia! Ducimus inventore eos officia nesciunt, neque assumenda id
-                sit iure recusandae? Unde odio illum voluptatibus mollitia esse animi corrupti,
-                facilis quos inventore obcaecati error voluptate nihil? Sed nemo laborum placeat
-                quidem, hic minima non quis, veritatis culpa quaerat deserunt mollitia quisquam
-                eligendi ipsa aliquid architecto, quod error aut eum qui iste? Blanditiis error
-                recusandae inventore consectetur, cumque, perferendis nobis mollitia sunt saepe
-                officiis reiciendis voluptates accusamus repudiandae, quod laborum provident iste
-                tenetur quidem voluptatem molestiae! Et esse est sunt vitae nihil sapiente culpa
-                odio perferendis assumenda incidunt. Expedita, mollitia nemo impedit sit, possimus
-                ad et consequatur adipisci voluptatum inventore reprehenderit iusto placeat
-                architecto facilis asperiores? Iste fuga corrupti perferendis quidem sunt optio
-                facilis, itaque ullam modi odio magni obcaecati, suscipit impedit eligendi. Facere
-                in unde itaque est enim, fugit aspernatur, suscipit consequatur reprehenderit maxime
-                velit veniam culpa praesentium harum! Deleniti exercitationem fugiat ipsa, explicabo
-                cum, magnam corporis ut blanditiis ullam error, veniam non. Repudiandae nemo ut
-                officia in, hic cupiditate voluptatibus, placeat nam repellat accusamus mollitia
-                aspernatur dicta quod! Voluptate illo ea ipsum repellat quam consectetur distinctio,
-                et vel saepe, autem quibusdam debitis accusamus corrupti sed optio adipisci
-                accusantium sequi dolore voluptas ducimus exercitationem ad expedita neque! Rerum,
-                sunt. Excepturi nesciunt consectetur voluptatum placeat qui aliquid illo tempore
-                inventore? Est perferendis quam aliquam eius earum architecto neque itaque officiis.
-                Voluptates ea quo expedita magnam nobis, officiis repellat doloribus dignissimos eos
-                deleniti tempore soluta illum id totam. Accusantium suscipit labore cupiditate enim,
-                alias, soluta eligendi mollitia ad harum, explicabo perferendis est nulla! Itaque,
-                facilis fugiat!
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+                <h1 class="header__title">Popzy.js</h1>
+                <div class="header__tagline">
+                    A lightweight and simple modal library built with pure JavaScript.
+                </div>
+                <a href="https://github.com/mycvlnn/Popzy.js" class="header__github" target="_blank"
+                    ><img src="./assets/github.svg" alt="View on GitHub"
+                /></a>
             </div>
-        </main>
-        <template id="template-login">
-            <form action="" id="form-login">
-                <h2>Login</h2>
-                <input type="email" name="email" id="email" placeholder="Enter email" /><br />
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Enter password"
-                /><br />
-                <button type="submit">Login</button>
-            </form>
-        </template>
-        <template id="template-lorem">
-            excepturi soluta voluptatibus quibusdam, magni dolor amet, ipsam aliquid incidunt earum
-            non animi quidem distinctio. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Animi molestias dolor iste velit at natus exercitationem in deserunt, nemo corrupti sint
-            error eius non dolore officiis nisi est harum provident magni neque quod. Voluptas illum
-            aperiam veritatis debitis fugiat, magni assumenda necessitatibus tempora nihil, nobis
-            veniam corporis optio a architecto doloremque dolore tenetur ducimus sequi. Ea
-            repudiandae ex officiis reprehenderit consequuntur consequatur libero reiciendis fuga
-            laboriosam, quia quas voluptatum id cumque dolorum beatae tempore rerum quis sequi sed
-            perferendis ut deleniti doloremque nemo magni! Consequuntur odio impedit alias sapiente,
-            obcaecati saepe omnis debitis harum voluptatibus reiciendis nemo! Repellat voluptas
-            corporis modi vel sunt ipsum, exercitationem, culpa itaque nemo dolorem delectus
-            consequatur perspiciatis? Optio blanditiis amet, magnam adipisci illum, cum voluptas
-            iure fuga vero voluptate repudiandae possimus aliquam facilis, aut eaque quidem. Quidem
-            nulla eaque labore fuga, consequatur modi, reprehenderit doloremque laboriosam, nam
-            earum temporibus repudiandae minus et rerum repellendus. Fugit officia quam atque aut a
-            nisi dolor delectus quo voluptatibus, error at in, iure accusantium commodi. In alias
-            laudantium nisi aliquam nam excepturi. Sequi quod nam, officia eum ex libero, quo
-            deleniti mollitia itaque in tenetur reiciendis, voluptatum laboriosam sint odit cum.
-            Magnam illum accusamus saepe. Laboriosam unde asperiores, ad debitis eos alias explicabo
-            ipsum quod quam sit voluptatum perferendis, quidem, culpa quibusdam id eius rem non
-            minus corrupti suscipit. Illum accusantium autem, illo vero odio vel qui, error quidem
-            quasi doloribus exercitationem fugiat sit itaque atque perferendis ad? Iure quibusdam,
-            animi veritatis, omnis consequatur nam dolorum inventore ex facere odit accusantium sunt
-            provident eveniet delectus eos officiis repellat, libero hic beatae voluptas porro
-            nulla. Laudantium fuga distinctio, voluptates doloribus, vel at eaque tenetur ipsa
-            similique, id soluta tempore obcaecati delectus iusto perferendis sed vitae laborum odit
-            labore sunt corrupti animi! Assumenda adipisci quos neque, culpa quidem accusamus,
-            voluptates amet nesciunt possimus vero voluptatibus est fugit iste eum quisquam iusto
-            veritatis quasi nostrum! Itaque, hic enim quia quibusdam ullam culpa eaque nobis
-            impedit. Debitis consequatur enim ab! Dolores quam, deserunt excepturi error unde, porro
-            a magnam possimus iusto blanditiis hic quas facilis beatae cum consectetur voluptatem!
-            Unde, atque qui autem sit praesentium reiciendis nisi placeat odit dolores voluptatibus
-            reprehenderit eligendi provident ipsum nihil nam sint tenetur molestias accusamus!
-            Dolorum quis magni nam nisi atque neque corporis voluptas nostrum, magnam excepturi
-            veniam placeat quod quam cupiditate sequi, doloribus alias, dicta repellendus minus
-            ullam? Labore repellendus cum eligendi, consectetur suscipit velit nobis nostrum iure?
-            Ad ipsam, optio eveniet amet nulla veniam quidem unde ipsa illum odit iusto, corporis
-            reiciendis ut a? Ratione nam commodi consequatur in assumenda ullam delectus distinctio
-            ab dolore dignissimos fugiat non ad dolor magni modi consectetur a adipisci recusandae
-            tempora, eaque ex inventore mollitia saepe temporibus. Ipsam error nobis eligendi,
-            cumque explicabo quibusdam enim culpa sapiente quisquam sint harum ab quas dolorum omnis
-            rem nemo voluptatum. Fugit, nihil officia nisi quae harum sint iste quod, tempora sequi
-            laborum placeat at voluptate ea fuga? Eveniet minima iusto saepe, non laborum culpa illo
-            facere eaque quidem sit voluptatem sequi deserunt ab quibusdam perspiciatis maxime
-            suscipit. Eligendi illo ipsam nihil illum natus sint, similique unde assumenda maxime
-            fugiat! Fugiat totam animi molestias quis dolorem. Blanditiis, consequuntur libero rem
-            iure ea ipsum fugiat iste quaerat possimus doloribus. Iure sunt velit unde ipsum aliquam
-            voluptas ut laborum nemo natus minima aperiam earum delectus quibusdam officia expedita
-            perferendis, excepturi voluptates hic asperiores sequi consectetur molestiae
-            perspiciatis ullam? Ipsam consequuntur autem eligendi quidem non ab, placeat voluptatum
-            voluptas reiciendis error quaerat itaque odit voluptates illum. Placeat distinctio
-            libero porro. Voluptatum maxime eos illum eveniet esse odit. Officia mollitia quaerat
-            dolores! Amet veritatis minus laboriosam esse eligendi incidunt exercitationem
-            necessitatibus autem unde, consequatur repellat! Asperiores, officiis minima incidunt
-            quidem doloremque mollitia earum animi, similique, architecto natus vitae rem et eius
-            consequuntur facere quam odit placeat assumenda corporis possimus. Nisi temporibus harum
-            ab repellendus velit sapiente, optio beatae obcaecati ducimus esse exercitationem eaque
-            rerum soluta, sunt minus qui similique nemo tenetur asperiores enim. Voluptatum
-            cupiditate repellat, suscipit neque illo molestiae sunt dolores beatae, quaerat magnam
-            enim odit fuga rem, ipsa nulla consectetur tempore ipsum numquam iusto? Iusto atque
-            magnam, ad laboriosam non magni libero! Adipisci rerum, praesentium soluta ullam
-            obcaecati accusamus voluptate quas sed sapiente laudantium, mollitia modi
-            necessitatibus! Mollitia accusantium labore nostrum corporis cum molestias ducimus eos
-            delectus dolorum et earum, necessitatibus eum dolore laudantium? Sit sunt dolore illum
-            alias doloribus. Provident suscipit, numquam ipsa eveniet expedita reprehenderit
-            reiciendis iste consequuntur fuga accusamus delectus est aperiam quam, quidem tempore
-            laboriosam dolorum sed dolor. Tempore non illo laborum provident eaque dolores numquam
-            vero voluptas maxime, veritatis amet nostrum eos necessitatibus sapiente, voluptatem
-            alias blanditiis voluptatum labore porro minima error libero quidem. Magnam soluta quos
-            quod voluptatem voluptas ratione, ducimus nam veritatis porro in sint necessitatibus,
-            eligendi rem deleniti dolorem mollitia amet nostrum suscipit quaerat laborum omnis
-            repudiandae voluptatum eos. Id corrupti aliquam, placeat fugiat consequatur dicta
-            cupiditate ipsa delectus autem eum fuga pariatur voluptatibus totam minus accusantium
-            neque dolor ut sint iure! Deserunt, dignissimos, nihil laboriosam commodi quis maxime
-            repellat architecto beatae veniam suscipit amet! Excepturi illum temporibus enim
-            possimus reiciendis explicabo id minima cum laborum facere error consequuntur nihil
-            consectetur saepe eveniet, porro placeat eaque fuga veniam nostrum fugit commodi?
-            Voluptatum facilis omnis incidunt odit ex delectus possimus quas sunt at mollitia,
-            soluta laboriosam porro earum aspernatur adipisci alias sequi corrupti repellendus optio
-            dolorum! Fugit sint ut repudiandae obcaecati voluptatem blanditiis animi porro in
-            placeat aspernatur sunt at ipsa, odio ipsum hic voluptates possimus debitis laboriosam
-            cumque, consequatur laborum rem, magnam doloremque! Mollitia provident architecto cumque
-            quas, aperiam sapiente nemo fugit nobis, dignissimos atque natus eligendi eaque. Tempora
-            ratione magnam, nihil voluptatum natus accusamus eveniet nisi animi dignissimos
-            consectetur quos fugit saepe nam ad adipisci rem officia. Blanditiis commodi eveniet
-            asperiores obcaecati veniam sint aperiam ipsum libero, voluptates, beatae laudantium
-            repudiandae iusto, sapiente magnam quos provident. Cum sit praesentium quod quos
-            nostrum, iste alias? Tenetur reprehenderit ipsa, vel impedit velit dolorum nisi repellat
-            rerum molestiae obcaecati, placeat ad perferendis. Deleniti, impedit rerum optio quia
-            quo aperiam!
+        </header>
+        <!-- /HEADER -->
+
+        <!-- CONTAINER -->
+        <div class="container content">
+            <h2 data-bullet="1" class="title" id="try-it-out">Try It Out</h2>
+            <p>
+                Popzy is a lightweight <strong>modal library</strong> built with pure JavaScript.
+                (<a href="https://github.com/mycvlnn/Popzy.js" target="_blank"
+                    >Source code available on GitHub</a
+                >)
+            </p>
+
+            <ul>
+                <li>No dependencies</li>
+                <li>Fully customizable with CSS</li>
+                <li>Supports CSS transitions</li>
+                <li>Simple and intuitive API</li>
+                <li>No extra files needed</li>
+                <li>Optimized for user experience</li>
+            </ul>
+
+            <p>Here are some examples of how to use Popzy:</p>
+
+            <button class="btn btn--primary btn-demo js-popzy-modal-1">Basic Modal</button>
+            <button class="btn btn--secondary btn-demo js-popzy-modal-2">Modal with Buttons</button>
+            <button class="btn btn--secondary btn-demo js-popzy-modal-3">
+                Large Content Modal
+            </button>
+            <button class="btn btn--secondary btn-demo js-popzy-modal-4">
+                Footer-Only Close Modal
+            </button>
+            <button class="btn btn--secondary btn-demo js-popzy-modal-5">
+                Persistent Modal (Stays in DOM)
+            </button>
+            <button class="btn btn--secondary btn-demo js-popzy-modal-6">Multiple Modals</button>
+            <button class="btn btn--secondary btn-demo js-popzy-modal-7">
+                YouTube Embed Modal
+            </button>
+            <button class="btn btn--secondary btn-demo js-popzy-modal-8">Modal with form</button>
+            <button class="btn btn--secondary btn-demo js-popzy-modal-9">Modal with header</button>
+
+            <h2 data-bullet="2" class="title" id="installation">Installation</h2>
+            <table class="methods">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th class="w60">Steps</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Direct Download</td>
+                    <td>
+                        <a
+                            href="https://github.com/mycvlnn/Popzy.js/archive/refs/heads/main.zip"
+                            title="Download Popzy"
+                        >
+                            Download ZIP
+                        </a>
+                        <p>
+                            Simply extract the ZIP file and use the
+                            <code>popzy.min.js</code> and <code>popzy.min.css</code> files in your
+                            project.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <p>
+                Popzy provides a small CSS file that you can include directly via a CDN link. This
+                makes it easy to integrate into your project and customize as needed.
+            </p>
+
+            <p>Include the Popzy JavaScript file in your project:</p>
+
+            <pre
+                class="html"
+            ><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/mycvlnn/Popzy.js@main/popzy.min.jss&quot;&gt;&lt;/script&gt;</code></pre>
+
+            <p>Optionally, include the Popzy CSS file for default styling:</p>
+
+            <pre class="html"><code>&lt;link
+    rel=&quot;stylesheet&quot;
+    href=&quot;https://cdn.jsdelivr.net/gh/mycvlnn/Popzy.js@main/popzy.min.css&quot;
+&gt;</code></pre>
+
+            <p>
+                You can explore the list of CSS classes used by Popzy in the
+                <a href="#styling">Styling</a> section to easily customize them as needed.
+            </p>
+
+            <blockquote>
+                You can use the
+                <a href="https://github.com/mycvlnn/Popzy.js/releases" target="_blank">released</a>
+                versions of Popzy available here.
+            </blockquote>
+
+            <h2 data-bullet="3" class="title" id="usage">Usage</h2>
+            <pre class="javascript"><code>// Initialize a new modal
+const modal = new Popzy({
+    content: '&lt;h1&gt;This is content&lt;/h1&gt;',
+    // templateId: 'my-modal-template',
+    footer: true,
+    destroyOnClose: false,
+    closeMethods: ['overlay', 'button', 'esc'],
+    cssClass: ['custom-class-1', 'custom-class-2'],
+    onOpen: function() {
+        console.log('Modal opened');
+    },
+    onClose: function() {
+        console.log('Modal closed');
+    },
+});
+
+// Set modal content
+modal.setContent('&lt;h1&gt;This is new content&lt;/h1&gt;');
+
+// Add footer buttons
+modal.addFooterBtn('Cancel', 'btn btn--default', function(e) {
+    modal.close();
+});
+
+modal.addFooterBtn('Confirm', 'btn btn--primary', function(e) {
+    modal.close();
+});
+
+// Open the modal
+modal.open();
+
+// Close the modal
+modal.close();</code></pre>
+
+            <p>
+                If you use <code>templateId</code>, ensure that a
+                <code>&lt;template&gt;</code> element with the corresponding <code>id</code> exists
+                in your HTML. Below is an example:
+            </p>
+
+            <pre class="html">
+<code>&lt;template id="my-modal-template"&gt;
+    &lt;div&gt;
+        &lt;h1&gt;This is modal content&lt;/h1&gt;
+        &lt;p&gt;You can add any HTML here.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code>
+</pre>
+            <p>
+                <strong>Note:</strong> When using <code>templateId</code>, do not provide
+                <code>content</code>. If both are specified, <code>content</code> will take
+                precedence, and <code>templateId</code> will be ignored.
+            </p>
+
+            <h2 data-bullet="4" class="title" id="options">Options</h2>
+            <table class="methods">
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Type</th>
+                        <th class="w60">Description</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>content, templateId</td>
+                    <td>string</td>
+                    <td>
+                        One of <code>content</code> or <code>templateId</code> is required to set
+                        the modal content. <code>content</code> accepts an HTML string, while
+                        <code>templateId</code> specifies the ID of a template element. If both are
+                        provided, <code>content</code> will take precedence.
+                    </td>
+                </tr>
+                <tr>
+                    <td>cssClass</td>
+                    <td>array</td>
+                    <td>
+                        Custom CSS classes applied to the modal container (default: <code>[]</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>footer</td>
+                    <td>boolean</td>
+                    <td>
+                        Shows a footer in the modal (default:
+                        <code>false</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>destroyOnClose</td>
+                    <td>boolean</td>
+                    <td>
+                        Decides whether the modal is removed from the DOM upon closing (default:
+                        <code>true</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>closeMethods</td>
+                    <td>array</td>
+                    <td>
+                        Defines methods to close the modal (default:
+                        <code>['overlay', 'button', 'esc']</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>enableScrollLock</td>
+                    <td>boolean</td>
+                    <td>
+                        Enables or disables scroll locking when the modal is open. When set to
+                        <code>true</code>, it prevents scrolling on the target element specified by
+                        <code>scrollLockTarget</code>. Default: <code>true</code>.
+                    </td>
+                </tr>
+                <tr>
+                    <td>scrollLockTarget</td>
+                    <td>function</td>
+                    <td>
+                        A callback that returns the element to apply scroll locking on. By default,
+                        it locks scrolling on
+                        <code>document.body</code>.
+                    </td>
+                </tr>
+                <tr>
+                    <td>onOpen</td>
+                    <td>function</td>
+                    <td>
+                        Callback function executed when the modal opens (after transition ends)
+                        (default:
+                        <code>undefined</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>onClose</td>
+                    <td>function</td>
+                    <td>
+                        Callback function executed when the modal closes (default:
+                        <code>undefined</code>)
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Styling section -->
+            <h2 data-bullet="5" class="title" id="styling">Styling</h2>
+            <p>
+                Popzy styles are defined in CSS. You can fully customize it to meet your design
+                requirements.
+            </p>
+
+            <table class="methods">
+                <thead>
+                    <tr>
+                        <th>Class Name</th>
+                        <th style="width: 70%">Description/Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>.popzy</code></td>
+                        <td>
+                            Styles the backdrop overlay for the modal. Handles positioning,
+                            centering the modal, and applying a semi-transparent background.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.popzy--show</code></td>
+                        <td>
+                            Applied when the modal is visible. Controls the visibility and opacity
+                            of the backdrop.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.popzy__container</code></td>
+                        <td>
+                            Styles the modal container, including its size, padding, border-radius,
+                            and transform animations for scaling in/out.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.popzy__close</code></td>
+                        <td>
+                            Styles the close button inside the modal, including its size, position,
+                            and hover effects.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.popzy__content</code></td>
+                        <td>
+                            Handles the modal's main content area, including scrollable behavior
+                            with a maximum height.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.popzy__footer</code></td>
+                        <td>
+                            Styles the modal footer, aligning buttons to the right and adding
+                            spacing between them.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.popzy--no-scroll</code></td>
+                        <td>
+                            Disables scrolling on the target element specified by
+                            <code>scrollLockTarget</code> when the modal is open.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                For more details, you can view the full CSS file directly here:
+                <a
+                    href="https://github.com/sondnpt00343/popzy/blob/main/src/popzy.css"
+                    target="_blank"
+                    >popzy.css</a
+                >.
+            </p>
+
+            <!-- API section -->
+            <h2 data-bullet="6" class="title" id="api">API</h2>
+            <table class="methods">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th class="w60">Description</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>open()</td>
+                    <td>
+                        Opens the modal and triggers the
+                        <code>onOpen</code> callback.
+                    </td>
+                </tr>
+                <tr>
+                    <td>close()</td>
+                    <td>
+                        Closes the modal and triggers the
+                        <code>onClose</code> callback. If <code>close(true)</code> is called, it
+                        behaves the same as <code>destroy()</code>, removing the modal from the DOM.
+                    </td>
+                </tr>
+                <tr>
+                    <td>setContent(content)</td>
+                    <td>Updates the modal content.</td>
+                </tr>
+                <tr>
+                    <td>setFooterContent(content)</td>
+                    <td>Updates the footer content.</td>
+                </tr>
+                <tr>
+                    <td>addFooterBtn(label, cssClass, callback)</td>
+                    <td>Adds a button to the footer with a callback function.</td>
+                </tr>
+                <tr>
+                    <td>destroy()</td>
+                    <td>
+                        Completely removes the modal elements from the DOM and unbinds all
+                        associated events.
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- /CONTAINER -->
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    Made with ❤️ by
+                    <a href="https://github.com/mycvlnn" target="_blank">mycvlnn</a>
+                </p>
+            </div>
+        </footer>
+        <!-- /FOOTER -->
+
+        <template id="login-template">
+            <div class="login-form">
+                <h1 class="login-form__title">Login</h1>
+                <form action="#" id="form-login">
+                    <div class="login-form__group">
+                        <label for="username" class="login-form__label">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                            class="login-form__input"
+                        />
+                    </div>
+                    <div class="login-form__group">
+                        <label for="password" class="login-form__label">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            class="login-form__input"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn--primary login-form__submit">Login</button>
+                </form>
+            </div>
         </template>
 
-        <script src="./popzy.js"></script>
+        <!-- Logout template -->
+        <template id="logout-template">
+            <div class="logout-form">
+                <p class="logout_message">Are you sure you want to log out?</p>
+            </div>
+        </template>
+
+        <script src="./assets/highlight/highlight.js"></script>
+        <script src="./src/popzy.js"></script>
+        <script>
+            // Highlight code
+            hljs.initHighlightingOnLoad();
+
+            // Modal samples
+
+            // Basic Modal
+            const modal1Btn = document.querySelector(".js-popzy-modal-1");
+            const modal1 = new Popzy({
+                content: `
+                    <h1>Basic Modal</h1>
+                    <p>This is a basic modal with a simple message. You can close it by clicking the overlay or the close button.</p>
+                `,
+            });
+
+            modal1Btn.onclick = () => {
+                modal1.open();
+            };
+
+            // Modal with Buttons
+            const modal2Btn = document.querySelector(".js-popzy-modal-2");
+            const modal2 = new Popzy({
+                content: `
+                    <h1>Modal with Buttons</h1>
+                    <p>This modal includes functional buttons for actions such as canceling or confirming.</p>
+                `,
+                footer: true,
+            });
+            modal2.addFooterButton("Cancel", "modal-btn", () => {
+                modal2.close();
+            });
+            modal2.addFooterButton("Confirm", "modal-btn primary", () => {
+                console.log("Action confirmed!");
+                modal2.close();
+            });
+            modal2Btn.onclick = () => {
+                modal2.open();
+            };
+
+            // Large Content Modal
+            const modal3Btn = document.querySelector(".js-popzy-modal-3");
+            const modal3 = new Popzy({
+                content: `
+                    <h1>Large Content Modal</h1>
+                    <p>This modal contains a large amount of content, suitable for displaying extended text or information.</p>
+                    <p>Please scroll down to view the entire content.</p>
+                    <p>The content can include multiple paragraphs, images, or other detailed information.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil cumque adipisci mollitia voluptatibus explicabo non perspiciatis eaque sed qui. Est.</p>
+                `,
+            });
+            modal3Btn.onclick = () => {
+                modal3.open();
+            };
+
+            // Footer-Only Close Modal
+            const modal4Btn = document.querySelector(".js-popzy-modal-4");
+            const modal4 = new Popzy({
+                content: `
+                    <h1>Footer-Only Close Modal</h1>
+                    <p>This modal can only be closed via the button in the footer for a controlled experience.</p>
+                `,
+                footer: true,
+                closeMethods: [],
+            });
+            modal4.addFooterButton("Close", "modal-btn", () => {
+                modal4.close();
+            });
+            modal4Btn.onclick = () => {
+                modal4.open();
+            };
+
+            // Persistent Modal
+            const modal5Btn = document.querySelector(".js-popzy-modal-5");
+            const modal5 = new Popzy({
+                content: `
+                    <h1>Persistent Modal</h1>
+                    <p>This modal stays in the DOM even after being closed, allowing you to reopen it without losing any changes.</p>
+                    <p>You can write something in the input below, close the modal, and reopen it to see the content still intact.</p>
+                    <input type="text" placeholder="Type something here..." class="modal-input" style="width: 100%; padding: 10px; margin-top: 10px;" />
+                `,
+                destroyOnClose: false,
+            });
+            modal5Btn.onclick = () => {
+                modal5.open();
+            };
+
+            // Multiple Modals
+            const modal6Btn = document.querySelector(".js-popzy-modal-6");
+            const modal6 = new Popzy({
+                content: `
+                    <h1>Multiple Modals</h1>
+                    <p>This modal demonstrates interaction between multiple modals. You can open another modal from here.</p>
+                    <button class="btn" onclick="modal1.open();">Open Basic Modal</button>
+                `,
+            });
+
+            modal6Btn.onclick = () => {
+                modal6.open();
+            };
+
+            // Youtube Embed Modal
+            const modal7Btn = document.querySelector(".js-popzy-modal-7");
+            const modal7 = new Popzy({
+                content: `<iframe width="560" height="315" src="https://www.youtube.com/embed/RDfwGkasp58?si=g8qSqHld--Uimjme" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+            });
+            modal7Btn.onclick = () => {
+                modal7.open();
+            };
+
+            // Modal with form
+            const modal8Btn = document.querySelector(".js-popzy-modal-8");
+            const modal8 = new Popzy({
+                templateId: "login-template",
+            });
+
+            modal8Btn.onclick = () => {
+                const contentModal = modal8.open();
+                const form = contentModal.querySelector("#form-login");
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const username = form.querySelector("#username").value;
+                    const password = form.querySelector("#password").value;
+                    console.log("Username:", username);
+                    console.log("Password:", password);
+                    modal8.close();
+                });
+            };
+
+            // Modal with header
+            const modal9 = new Popzy({
+                templateId: "logout-template",
+                closeMethods: ["backdrop", "esc", "button"],
+                header: true,
+                footer: true,
+            });
+
+            modal9.setHeaderContent(`<h1 class="logout-form__title">Logout</h1>`);
+            modal9.addFooterButton("No", "modal-btn", () => modal9.close());
+            modal9.addFooterButton("Yes", "modal-btn primary", () => modal9.close());
+
+            document.querySelector(".js-popzy-modal-9").onclick = () => modal9.open();
+        </script>
     </body>
 </html>

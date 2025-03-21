@@ -1,4 +1,4 @@
-.popzy__backdrop {
+.popzy {
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.6);
@@ -18,6 +18,25 @@
 
 .popzy--no-scroll {
     overflow: hidden;
+}
+
+.popzy__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #666;
+    background: #ebebeb;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+}
+
+.popzy__close:hover {
+    color: #333;
+    cursor: pointer;
 }
 
 .popzy__container {
@@ -57,6 +76,9 @@
     overflow-y: auto;
     flex: 1;
     padding: 20px 24px;
+}
+
+.popzy__content--with-header {
     padding-top: 0;
 }
 
@@ -70,4 +92,5 @@
     justify-content: flex-end;
     align-items: center;
     padding: 20px 24px;
+    gap: 10px;
 }

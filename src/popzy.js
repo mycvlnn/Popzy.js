@@ -8,7 +8,6 @@ Popzy.prototype._createButton = function (text, className, onClick) {
     return button;
 };
 
-// Xử lý tối ưu dùng chung cho tất cả modal
 Popzy.prototype._getScrollbarWidth = function () {
     // Kiểm tra trước đó đã tính toán rồi thì trả về giá trị đã tính
     if (this._scrollbarWidth) return this._scrollbarWidth;
@@ -29,27 +28,31 @@ Popzy.prototype._getScrollbarWidth = function () {
 Popzy.prototype._buildModal = function () {
     // Create backdrop
     this._backdrop = document.createElement("div");
-    this._backdrop.className = "popzy__backdrop";
+    this._backdrop.className = "popzy";
 
     // Create container
     const container = document.createElement("div");
     container.className = "popzy__container";
 
     // Create modal content
-    const modalContent = document.createElement("div");
-    modalContent.className = "popzy__content";
+    this._contentModal = document.createElement("div");
+    this._contentModal.className = "popzy__content";
 
     // Append content and elements
-    const templateCloned = this._template.content.cloneNode(true);
-    modalContent.append(templateCloned);
+    if (this._options.content) {
+        this._contentModal.innerHTML = this._options.content;
+    } else {
+        const templateCloned = this._template.content.cloneNode(true);
+        this._contentModal.append(templateCloned);
+    }
 
     // Thêm close button vào modal content
     if (this._allowButtonClose) {
         const closeBtn = this._createButton("&times;", "popzy__close", () => this.close());
-        modalContent.append(closeBtn);
+        this._contentModal.append(closeBtn);
     }
 
-    container.append(modalContent);
+    container.append(this._contentModal);
 
     // Chèn footer vào modal
     if (this._options.footer) {
@@ -65,6 +68,7 @@ Popzy.prototype._buildModal = function () {
         this._headerModal = document.createElement("div");
         this._headerModal.className = "popzy_header";
         this._renderHeaderContent();
+        this._contentModal.classList.add("popzy__content--with-header");
         container.prepend(this._headerModal);
     }
 
@@ -89,6 +93,47 @@ Popzy.prototype._handleEscapeKeyOuter = function (e) {
     if (e.key === "Escape") {
         this.close();
     }
+};
+
+Popzy.prototype._renderHeaderContent = function () {
+    if (this._headerModal && this._headerContent) {
+        this._headerModal.innerHTML = this._headerContent;
+    }
+};
+
+Popzy.prototype._renderFooterContent = function () {
+    if (this._footerModal && this._footerContent) {
+        this._footerModal.innerHTML = this._footerContent;
+    }
+};
+
+Popzy.prototype._renderFooterButtons = function () {
+    this._footerActions.forEach((action) => {
+        if (this._footerModal) {
+            this._footerModal.append(action);
+        }
+    });
+};
+
+// ---------------- Các hàm mà bên ngoài có thể dùng ----------------
+
+Popzy.prototype.setHeaderContent = function (content) {
+    if (!this._options.header) return;
+    this._headerContent = content;
+    this._renderHeaderContent();
+};
+
+Popzy.prototype.setFooterContent = function (content) {
+    if (!this._options.footer) return;
+    this._footerContent = content;
+    this._renderFooterContent();
+};
+
+Popzy.prototype.addFooterButton = function (title, className, onClick) {
+    if (!this._options.footer) return;
+    const button = this._createButton(title, className, onClick);
+    this._footerActions.push(button);
+    this._renderFooterButtons();
 };
 
 Popzy.prototype.open = function () {
@@ -132,11 +177,8 @@ Popzy.prototype.close = function (destroy = this._options.destroyOnClose) {
     document.removeEventListener("keydown", this._handleEscapeKey);
 
     this._ontransitionend(() => {
-        if (destroy && this._backdrop) {
-            this._backdrop.remove();
-            this._backdrop = null;
-            this._footerModal = null;
-            this._headerModal = null;
+        if (destroy) {
+            this.destroy();
         }
         // Thực hiện mở cuộn của body
         if (!Popzy.elements.length) {
@@ -151,49 +193,21 @@ Popzy.prototype.destroy = function () {
     if (this._backdrop) {
         this._backdrop.remove();
         this._backdrop = null;
+        this._footerModal = null;
+        this._headerModal = null;
+        this._contentModal = null;
     }
 };
 
-Popzy.prototype._renderHeaderContent = function () {
-    if (this._headerModal && this._headerContent) {
-        this._headerModal.innerHTML = this._headerContent;
+Popzy.prototype.setContent = function (content) {
+    this._options.content = content;
+    if (this._contentModal) {
+        this._contentModal.innerHTML = this._options.content;
     }
-};
-
-Popzy.prototype.setHeaderContent = function (content) {
-    if (!this._options.header) return;
-    this._headerContent = content;
-    this._renderHeaderContent();
-};
-
-Popzy.prototype.setFooterContent = function (content) {
-    if (!this._options.footer) return;
-    this._footerContent = content;
-    this._renderFooterContent();
-};
-
-Popzy.prototype._renderFooterContent = function () {
-    if (this._footerModal && this._footerContent) {
-        this._footerModal.innerHTML = this._footerContent;
-    }
-};
-
-Popzy.prototype._renderFooterButtons = function () {
-    this._footerActions.forEach((action) => {
-        if (this._footerModal) {
-            this._footerModal.append(action);
-        }
-    });
-};
-
-Popzy.prototype.addFooterButton = function (title, className, onClick) {
-    if (!this._options.footer) return;
-    const button = this._createButton(title, className, onClick);
-    this._footerActions.push(button);
-    this._renderFooterButtons();
 };
 
 function Popzy({
+    content,
     templateId,
     cssClassContainer = [],
     cssClassBackdrop = [],
@@ -205,6 +219,7 @@ function Popzy({
     destroyOnClose = true,
 }) {
     this._options = {
+        content,
         templateId,
         cssClassContainer,
         cssClassBackdrop,
@@ -216,11 +231,21 @@ function Popzy({
         destroyOnClose,
     };
 
-    this._template = document.querySelector(`#${this._options.templateId}`);
-    if (!this._template) {
-        console.error(`Template with id ${this._options.templateId} not found`);
+    if (!this._options.templateId && !this._options.content) {
+        console.error("You must provide either a templateId or content");
         return;
     }
+
+    if (!this._options.content && this._options.templateId) {
+        this._template = document.querySelector(`#${this._options.templateId}`);
+        if (!this._template) {
+            console.error(`Template with id ${this._options.templateId} not found`);
+            return;
+        }
+    }
+
+    // Nếu trong trường hợp truyền content thì ưu tiên hơn template
+
     this._allowBackdropClose = closeMethods.includes("backdrop");
     this._allowButtonClose = closeMethods.includes("button");
     this._allowEscapeClose = closeMethods.includes("esc");
