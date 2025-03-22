@@ -108,6 +108,31 @@ modal.destroy();
 | `onClose`           | `function` | `() => {}`                      | Callback when modal closes.                 |
 | `destroyOnClose`    | `boolean`  | `true`                          | Destroy modal after closing.                |
 
+## Configuration
+
+### Enabling Scroll Lock
+
+You can enable scroll lock to prevent background scrolling when the modal is open by setting the `enableScrollLock` option to `true`. You can also specify the target element for scroll lock using the `scrollLockTarget` option.
+
+```javascript
+const modal = new Popzy({
+    content: "<p>This modal prevents background scrolling</p>",
+    footer: true,
+    header: true,
+    enableScrollLock: true,
+    scrollLockTarget: document.body,
+});
+
+modal.open();
+```
+
+### Options
+
+| Option             | Type      | Default         | Description                             |
+| ------------------ | --------- | --------------- | --------------------------------------- |
+| `enableScrollLock` | `boolean` | `false`         | Prevent background scrolling when open. |
+| `scrollLockTarget` | `Element` | `document.body` | Target element for scroll lock.         |
+
 ## License
 
 Popzy is released under the MIT License.
