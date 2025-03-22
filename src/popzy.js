@@ -87,7 +87,6 @@ Popzy.prototype._ontransitionend = function (callback) {
 };
 
 Popzy.prototype._handleEscapeKeyOuter = function (e) {
-    console.log(this === Popzy.elements[Popzy.elements.length - 1]);
     if (this !== Popzy.elements[Popzy.elements.length - 1]) return;
 
     if (e.key === "Escape") {
@@ -147,8 +146,14 @@ Popzy.prototype.open = function () {
     }, 0);
 
     // Thực hiện khoá cuộn của body
-    document.body.classList.add("popzy--no-scroll");
-    document.body.style.paddingRight = this._getScrollbarWidth() + "px";
+    if (this._options.enableScrollLock) {
+        const scrollTarget = this._options.scrollLockTarget;
+        if (Popzy.elements.length === 1 && this._hasScrollbar(scrollTarget)) {
+            scrollTarget.classList.add("popzy--no-scroll");
+            const paddingRightTarget = parseInt(getComputedStyle(scrollTarget).paddingRight) || 0;
+            scrollTarget.style.paddingRight = paddingRightTarget + this._getScrollbarWidth() + "px";
+        }
+    }
 
     // Attach events
     if (this._allowEscapeClose) {
@@ -181,9 +186,10 @@ Popzy.prototype.close = function (destroy = this._options.destroyOnClose) {
             this.destroy();
         }
         // Thực hiện mở cuộn của body
-        if (!Popzy.elements.length) {
-            document.body.classList.remove("popzy--no-scroll");
-            document.body.style.paddingRight = "";
+        if (this._options.enableScrollLock && !Popzy.elements.length) {
+            const scrollTarget = this._options.scrollLockTarget;
+            scrollTarget.classList.remove("popzy--no-scroll");
+            scrollTarget.style.paddingRight = "";
         }
         if (typeof this._options.onClose === "function") this._options.onClose();
     });
@@ -206,6 +212,22 @@ Popzy.prototype.setContent = function (content) {
     }
 };
 
+Popzy.prototype._hasScrollbar = function (target) {
+    if ([document.documentElement, document.body].includes(target)) {
+        const scrollHeight = Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight
+        );
+        const clientHeight = Math.max(
+            document.body.clientHeight,
+            document.documentElement.clientHeight
+        );
+        return scrollHeight > clientHeight;
+    }
+
+    return target.scrollHeight > target.clientHeight;
+};
+
 function Popzy({
     content,
     templateId,
@@ -217,6 +239,8 @@ function Popzy({
     footer = false,
     header = false,
     destroyOnClose = true,
+    enableScrollLock = true,
+    scrollLockTarget = document.body,
 }) {
     this._options = {
         content,
@@ -229,6 +253,8 @@ function Popzy({
         footer,
         header,
         destroyOnClose,
+        enableScrollLock,
+        scrollLockTarget,
     };
 
     if (!this._options.templateId && !this._options.content) {
