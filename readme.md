@@ -17,10 +17,10 @@ Popzy does not require installation. Simply include the script in your project a
 
 ```html
 <!-- Include Popzy JavaScript -->
-<script src="https://cdn.jsdelivr.net/gh/mycvlnn/Popzy.js@main/popzy.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mycvlnn/Popzy.js@v1.0.2/popzy.min.js"></script>
 
 <!-- Include Popzy CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mycvlnn/Popzy.js@main/popzy.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mycvlnn/Popzy.js@v1.0.2/popzy.min.css" />
 ```
 
 ## Usage
